@@ -11,7 +11,9 @@ app.use("/todos", todoRoutes);
 app.get('/', (req, res) => {
     res.send('This express application works!');
 })
-
+app.use((error, req, res, next) => {
+    res.status(500).json({message: error.message });
+})
 /*app.listen(3101, () => {
    console.log("Server is running on port 3100")
 })*/
